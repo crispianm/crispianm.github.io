@@ -31,30 +31,20 @@ body { margin: 0; padding: 0; }
         // Heatmap layers also work with a vector tile source.
         map.addSource('bristol_pubs', {
             'type': 'geojson',
-            'data': './bristol test data/bristol_pubs_multipolygons.geojson'
+            'data': './bristol test data/bristol_pubs_points.geojson'
         });
 
         // Add a new layer to visualize the polygon.
         map.addLayer({
             'id': 'bristol_pubs',
-            'type': 'fill',
+            'type': 'circle',
             'source': 'bristol_pubs', // reference the data source
             'layout': {},
             'paint': {
-                'fill-color': '#0080ff', // blue color fill
-                'fill-opacity': 0.5
+                'circle-radius': 6,
+                'circle-color': '#B42222'
             }
-        });
-        // Add a black outline around the polygon.
-        map.addLayer({
-            'id': 'outline',
-            'type': 'line',
-            'source': 'bristol_pubs',
-            'layout': {},
-            'paint': {
-                'line-color': '#000',
-                'line-width': 3
-            }
+            // 'filter': ['==', '$type', 'Point']
         });
 
     });

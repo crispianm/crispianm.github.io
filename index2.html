@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>new title hehe</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+
+<script>
+	mapboxgl.accessToken = 'sk.eyJ1IjoiY3Jpc3BpYW5tIiwiYSI6ImNsMG1oeGJqejA1a3kzYm83bGhzZGFzbm0ifQ.Ncne-l2qXx2arHsHpUmVcw';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v9',
+        center: [7.828,44.836],
+        zoom: 2
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+        map.on('load', function () {
+                map.addSource("pubs", {
+                        "type": "geojson",
+                        "data": "./data/bristol_pubs_points.geojson"
+                });
+
+        map.addLayer({
+                "id": "pubs",
+                "type": "circle",
+                "source": "pubs",
+                "paint": {
+                        "circle-radius": 5,
+                        "circle-color": "#ff0000"
+                }
+        });
+    });
+
+    // map.on('load', () => {
+    //     // Add a geojson point source.
+    //     // Heatmap layers also work with a vector tile source.
+    //     map.addSource('bristol_pubs', {
+    //         'type': 'geojson',
+    //         'data': 'https://github.com/crispianm/crispianm.github.io/blob/main/bristol%20test%20data/bristol_pubs_points.geojson'
+    //     });
+
+    //     // Add a new layer to visualize the polygon.
+    //     map.addLayer({
+    //         'id': 'bristol_pubs',
+    //         'type': 'circle',
+    //         'source': 'bristol_pubs', // reference the data source
+    //         'layout': {},
+    //         'paint': {
+    //             'circle-radius': 6,
+    //             'circle-color': '#B42222'
+    //         }
+    //         // 'filter': ['==', '$type', 'Point']
+    //     });
+
+    // });
+
+
+</script>
+
+</body>
+</html>

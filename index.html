@@ -18,7 +18,7 @@ body { margin: 0; padding: 0; }
 	mapboxgl.accessToken = 'pk.eyJ1IjoiY3Jpc3BpYW5tIiwiYSI6ImNsMG1oazJhejE0YzAzZHVvd2Z1Zjlhb2YifQ.cv0zlPYY6WnoKM9YLD1lMQ';
     // Use a minimal variant of the Mapbox Dark style, with certain features removed.
     const map = new mapboxgl.Map({
-        style: 'mapbox://styles/examples/cj68bstx01a3r2rndlud0pwpv',
+        style: 'mapbox://styles/mapbox/cjaudgl840gn32rnrepcb9b9g',
         center: {
             lng: -2.6192,
             lat: 51.4493
@@ -31,9 +31,55 @@ body { margin: 0; padding: 0; }
 
     map.addControl(new mapboxgl.FullscreenControl());
 
+    map.addControl(
+        new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            // When active the map will receive updates to the device's location as it changes.
+            trackUserLocation: true,
+            // Draw an arrow next to the location dot to indicate which direction the device is heading.
+            showUserHeading: true
+        })
+    );
+
     map.on('load', () => {
+
+        map.addSource(
+            'mapbox-dem', {
+                'type': 'raster-dem',
+                'url': 'mapbox://mapbox.terrain-rgb',
+                'tileSize': 512,
+                'maxzoom': 14
+            });
+        // add the DEM source as a terrain layer with exaggerated height
+        map.setTerrain({
+            'source': 'mapbox-dem',
+            'exaggeration': 1.5});
+        
+        // add a sky layer that will show when the map is highly pitched
+        map.addLayer({
+            'id': 'sky',
+            'type': 'sky',
+            'paint': {
+                'sky-type': 'atmosphere',
+                'sky-atmosphere-sun': [0.0, 0.0],
+                'sky-atmosphere-sun-intensity': 15
+            }
+        });
+
+        map.addLayer({
+            'id': 'hillshading',
+            'source': 'mapbox-dem',
+            'type': 'hillshade'
+            // insert below waterway-river-canal-shadow;
+            // where hillshading sits in the Mapbox Outdoors style
+            },
+            'waterway-river-canal-shadow'
+        );
+
         const bins = 16;
-        const maxHeight = 200;
+        const maxHeight = 50;
         const binWidth = maxHeight / bins;
 
         // Divide the buildings into 16 bins based on their true height, using a layer filter.
@@ -49,14 +95,14 @@ body { margin: 0; padding: 0; }
                     ['<=', 'height', (i + 1) * binWidth]
                 ],
                 'type': 'fill-extrusion',
-                'minzoom': 15,
+                'minzoom': 14,
                 'paint': {
                     'fill-extrusion-color': '#aaa',
                     'fill-extrusion-height-transition': {
                         duration: 0,
                         delay: 0
                     },
-                    'fill-extrusion-opacity': 0.6
+                    'fill-extrusion-opacity': 1
                 }
             });
         }
@@ -129,7 +175,7 @@ body { margin: 0; padding: 0; }
 
                     // Animate the map bearing and light color over time, and make the light more
                     // intense when the audio is louder.
-                    map.setBearing(now / 500);
+                    // map.setBearing(now / 500);
                     const hue = (now / 100) % 360;
                     const saturation = Math.min(50 + avg / 4, 100);
                     map.setLight({

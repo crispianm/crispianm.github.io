@@ -25,46 +25,22 @@
 
     map.addControl(new mapboxgl.NavigationControl());
 
-        map.on('load', function () {
-                map.addSource("pubs", {
-                        "type": "geojson",
-                        "data": "./data/bristol_pubs_points.geojson"
-                });
+    map.on('load', function () {
+            map.addSource("pubs", {
+                    "type": "geojson",
+                    "data": "scotland.geojson"
+            });
 
-        map.addLayer({
-                "id": "pubs",
-                "type": "circle",
-                "source": "pubs",
-                "paint": {
-                        "circle-radius": 5,
-                        "circle-color": "#ff0000"
-                }
-        });
+    map.addLayer({
+            "id": "pubs",
+            "type": "circle",
+            "source": "pubs",
+            "paint": {
+                    "circle-radius": 5,
+                    "circle-color": "#ff0000"
+            }
     });
-
-    // map.on('load', () => {
-    //     // Add a geojson point source.
-    //     // Heatmap layers also work with a vector tile source.
-    //     map.addSource('bristol_pubs', {
-    //         'type': 'geojson',
-    //         'data': 'https://github.com/crispianm/crispianm.github.io/blob/main/bristol%20test%20data/bristol_pubs_points.geojson'
-    //     });
-
-    //     // Add a new layer to visualize the polygon.
-    //     map.addLayer({
-    //         'id': 'bristol_pubs',
-    //         'type': 'circle',
-    //         'source': 'bristol_pubs', // reference the data source
-    //         'layout': {},
-    //         'paint': {
-    //             'circle-radius': 6,
-    //             'circle-color': '#B42222'
-    //         }
-    //         // 'filter': ['==', '$type', 'Point']
-    //     });
-
-    // });
-
+    });
 
 </script>
 

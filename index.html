@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Scotland</title>
+<title>bivouac</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
@@ -20,7 +20,7 @@
     top: 10px;
     right: 60px;
     border-radius: 3px;
-    width: 120px;
+    width: 140px;
     border: 1px solid rgba(0, 0, 0, 0.4);
     font-family: 'Open Sans', sans-serif;
     }
@@ -127,11 +127,11 @@
             'waterway-river-canal-shadow'
         );
 
-        // Add Scotland polygon
+        // Add legality polygon
         map.addLayer({
-            'id': 'scotland_boundary',
+            'id': 'legality_boundary',
             'type': 'fill',
-            'source': 'scotland', // reference the data source
+            'source': 'legality', // reference the data source
             'layout': {},
             'paint': {
                 'fill-color': '#0080ff', // blue color fill
@@ -153,9 +153,9 @@
 
         // // Add a black outline around the polygon.
         // map.addLayer({
-        //     'id': 'scotland_outline',
+        //     'id': 'legality_outline',
         //     'type': 'line',
-        //     'source': 'scotland',
+        //     'source': 'legality',
         //     'layout': {},
         //     'paint': {
         //         'line-color': '#000',
@@ -176,7 +176,7 @@
         // });
 
         // HTML from the click event's properties.
-        map.on('click', 'scotland_boundary', (e) => {
+        map.on('click', 'legality_boundary', (e) => {
             new mapboxgl.Popup()
                 .setLngLat(e.lngLat)
                 .setHTML(e.features[0].properties.spr16nm)
@@ -185,13 +185,13 @@
 
         // Change the cursor to a pointer when
         // the mouse is over the states layer.
-        map.on('mouseenter', 'scotland_boundary', () => {
+        map.on('mouseenter', 'legality_boundary', () => {
             map.getCanvas().style.cursor = 'pointer';
         });
         
         // Change the cursor back to a pointer
         // when it leaves the states layer.
-        map.on('mouseleave', 'scotland_boundary', () => {
+        map.on('mouseleave', 'legality_boundary', () => {
             map.getCanvas().style.cursor = '';
         });
 
@@ -221,12 +221,12 @@
 
         map.on('idle', () => {
             // If these two layers were not added to the map, abort
-            if (!map.getLayer('scotland_boundary') || !map.getLayer('nps_boundary')) {
+            if (!map.getLayer('legality_boundary') || !map.getLayer('nps_boundary')) {
                 return;
             }
             
             // Enumerate ids of the layers.
-            const toggleableLayerIds = ['scotland_boundary', 'nps_boundary'];
+            const toggleableLayerIds = ['legality', 'National Parks'];
             
             // Set up the corresponding toggle button for each layer.
             for (const id of toggleableLayerIds) {

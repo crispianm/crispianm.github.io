@@ -48,14 +48,14 @@ body { margin: 0; padding: 0; }
 
     map.on('load', () => {
 
-        // map.addSource('scotland', {
-        //     'type': 'geojson',
-        //     'data': 'https://raw.githubusercontent.com/crispianm/crispianm.github.io/main/data/scotland.geojson'
-        // });
-
         map.addSource('scotland', {
             'type': 'geojson',
-            'data': 'https://raw.githubusercontent.com/crispianm/crispianm.github.io/main/data/dartmoor.geojson'
+            'data': 'https://raw.githubusercontent.com/crispianm/crispianm.github.io/main/data/scotland.geojson'
+        });
+
+        map.addSource('nps', {
+            'type': 'geojson',
+            'data': 'https://raw.githubusercontent.com/crispianm/crispianm.github.io/main/data/uk_national_parks_boundaries.geojson'
         });
 
         map.setTerrain({
@@ -94,29 +94,85 @@ body { margin: 0; padding: 0; }
             }
         });
 
-        // // Add Dartmoor polygon
+        // Add nps polygon
+        map.addLayer({
+            'id': 'nps_boundary',
+            'type': 'fill',
+            'source': 'nps', // reference the data source
+            'layout': {},
+            'paint': {
+                'fill-color': '#3D550C', // blue color fill
+                'fill-opacity': 0.5
+            }
+        });
+
+        // // Add a black outline around the polygon.
         // map.addLayer({
-        //     'id': 'dartmoor_boundary',
-        //     'type': 'fill',
-        //     'source': 'dartmoor', // reference the data source
+        //     'id': 'scotland_outline',
+        //     'type': 'line',
+        //     'source': 'scotland',
         //     'layout': {},
         //     'paint': {
-        //         'fill-color': '#0080ff', // blue color fill
-        //         'fill-opacity': 0.5
+        //         'line-color': '#000',
+        //         'line-width': 3
         //     }
         // });
 
-        // Add a black outline around the polygon.
-        map.addLayer({
-            'id': 'outline',
-            'type': 'line',
-            'source': 'scotland',
-            'layout': {},
-            'paint': {
-                'line-color': '#000',
-                'line-width': 3
-            }
+        // // Add a black outline around the polygon.
+        // map.addLayer({
+        //     'id': 'nps_outline',
+        //     'type': 'line',
+        //     'source': 'nps',
+        //     'layout': {},
+        //     'paint': {
+        //         'line-color': '#000',
+        //         'line-width': 3
+        //     }
+        // });
+
+        // HTML from the click event's properties.
+        map.on('click', 'scotland_boundary', (e) => {
+            new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(e.features[0].properties.spr16nm)
+                .addTo(map);
+            });
+
+        // Change the cursor to a pointer when
+        // the mouse is over the states layer.
+        map.on('mouseenter', 'scotland_boundary', () => {
+            map.getCanvas().style.cursor = 'pointer';
         });
+        
+        // Change the cursor back to a pointer
+        // when it leaves the states layer.
+        map.on('mouseleave', 'scotland_boundary', () => {
+            map.getCanvas().style.cursor = '';
+        });
+
+
+        map.on('click', 'nps_boundary', (e) => {
+            new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(e.features[0].properties.name)
+                .addTo(map);
+            });
+        
+        // Change the cursor to a pointer when
+        // the mouse is over the states layer.
+        map.on('mouseenter', 'nps_boundary', () => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+        
+        // Change the cursor back to a pointer
+        // when it leaves the states layer.
+        map.on('mouseleave', 'nps_boundary', () => {
+            map.getCanvas().style.cursor = '';
+        });
+
+        
+
+
 
 
 

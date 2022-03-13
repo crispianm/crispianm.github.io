@@ -48,11 +48,15 @@ body { margin: 0; padding: 0; }
 
     map.on('load', () => {
 
+        // map.addSource('scotland', {
+        //     'type': 'geojson',
+        //     'data': 'https://raw.githubusercontent.com/crispianm/crispianm.github.io/main/data/scotland.geojson'
+        // });
+
         map.addSource('scotland', {
             'type': 'geojson',
-            'data': 'https://raw.githubusercontent.com/crispianm/crispianm.github.io/main/data/scotland.geojson'
+            'data': 'https://raw.githubusercontent.com/crispianm/crispianm.github.io/main/data/dartmoor.geojson'
         });
-
 
         map.setTerrain({
             'source': 'mapbox-dem',
@@ -89,6 +93,18 @@ body { margin: 0; padding: 0; }
                 'fill-opacity': 0.5
             }
         });
+
+        // // Add Dartmoor polygon
+        // map.addLayer({
+        //     'id': 'dartmoor_boundary',
+        //     'type': 'fill',
+        //     'source': 'dartmoor', // reference the data source
+        //     'layout': {},
+        //     'paint': {
+        //         'fill-color': '#0080ff', // blue color fill
+        //         'fill-opacity': 0.5
+        //     }
+        // });
 
         // Add a black outline around the polygon.
         map.addLayer({

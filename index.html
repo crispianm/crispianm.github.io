@@ -93,14 +93,9 @@
 
     map.on('load', () => {
 
-        map.addSource('scotland', {
+        map.addSource('legality', {
             'type': 'geojson',
-            'data': 'https://raw.githubusercontent.com/crispianm/crispianm.github.io/main/data/scotland.geojson'
-        });
-
-        map.addSource('dartmoor', {
-            'type': 'geojson',
-            'data': 'https://raw.githubusercontent.com/crispianm/crispianm.github.io/main/data/dartmoor.geojson'
+            'data': 'https://raw.githubusercontent.com/crispianm/crispianm.github.io/main/data/legality.geojson'
         });
 
         map.addSource('nps', {
@@ -134,7 +129,7 @@
 
         // Add legality polygon
         map.addLayer({
-            'id': 'legality_boundary',
+            'id': 'Legality',
             'type': 'fill',
             'source': 'legality', // reference the data source
             'layout': {},
@@ -146,7 +141,7 @@
 
         // Add nps polygon
         map.addLayer({
-            'id': 'nps_boundary',
+            'id': 'National Parks',
             'type': 'fill',
             'source': 'nps', // reference the data source
             'layout': {},
@@ -181,7 +176,7 @@
         // });
 
         // HTML from the click event's properties.
-        map.on('click', 'legality_boundary', (e) => {
+        map.on('click', 'Legality', (e) => {
             new mapboxgl.Popup()
                 .setLngLat(e.lngLat)
                 .setHTML(e.features[0].properties.spr16nm)
@@ -190,18 +185,18 @@
 
         // Change the cursor to a pointer when
         // the mouse is over the states layer.
-        map.on('mouseenter', 'legality_boundary', () => {
+        map.on('mouseenter', 'Legality', () => {
             map.getCanvas().style.cursor = 'pointer';
         });
         
         // Change the cursor back to a pointer
         // when it leaves the states layer.
-        map.on('mouseleave', 'legality_boundary', () => {
+        map.on('mouseleave', 'Legality', () => {
             map.getCanvas().style.cursor = '';
         });
 
 
-        map.on('click', 'nps_boundary', (e) => {
+        map.on('click', 'National Parks', (e) => {
             new mapboxgl.Popup()
                 .setLngLat(e.lngLat)
                 .setHTML(e.features[0].properties.name)
@@ -210,13 +205,13 @@
         
         // Change the cursor to a pointer when
         // the mouse is over the states layer.
-        map.on('mouseenter', 'nps_boundary', () => {
+        map.on('mouseenter', 'National Parks', () => {
             map.getCanvas().style.cursor = 'pointer';
         });
         
         // Change the cursor back to a pointer
         // when it leaves the states layer.
-        map.on('mouseleave', 'nps_boundary', () => {
+        map.on('mouseleave', 'National Parks', () => {
             map.getCanvas().style.cursor = '';
         });
 
@@ -226,12 +221,12 @@
 
         map.on('idle', () => {
             // If these two layers were not added to the map, abort
-            if (!map.getLayer('legality_boundary') || !map.getLayer('nps_boundary')) {
+            if (!map.getLayer('Legality') || !map.getLayer('National Parks')) {
                 return;
             }
             
             // Enumerate ids of the layers.
-            const toggleableLayerIds = ['legality', 'National Parks'];
+            const toggleableLayerIds = ['Legality', 'National Parks'];
             
             // Set up the corresponding toggle button for each layer.
             for (const id of toggleableLayerIds) {

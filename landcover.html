@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		
+		<link rel="icon" href="images/favicon.ico" type="image/vnd.microsoft.icon" />
+		<title>OSM - Landuse</title>
+		
+		<script src="libs/jquery/jquery-2.2.1.min.js"></script>
+		<!-- jquery mobile only for the touch events -->
+		<script src="libs/jquery-mobile/jquery.mobile.custom.min.js"></script>
+		
+		<link rel="stylesheet" href="libs/semantic/dist/semantic.min.css" />
+		<script src="libs/semantic/dist/semantic.js"></script>
+
+		<link rel="stylesheet" href="libs/ol-6.4.3/ol.css" />
+		<script src="libs/ol-6.4.3/ol.js"></script>
+		
+		<script src="libs/bower_components/d3/d3.min.js"></script>
+		
+		<link rel="stylesheet" href="libs/bower_components/c3/c3.min.css" />
+		<script src="libs/bower_components/c3/c3.min.js"></script>
+		
+		
+		<link rel="stylesheet" href="css/osm_lulc.css" />
+	</head>
+	<body>
+		<div id="sidebar-left" class="ui left sidebar">
+				<img src="https://maps.heigit.org/osmlanduse/wms?service=WMS&version=1.3.0&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=osmlanduse:osm_lulc&legend_options=fontAntiAliasing:true;dpi:192;bgColor:0xFF0000" alt="map legend" />
+				<button><i class="yellow list layout icon"></i></button>
+		</div>
+		<div id="main-container" class="pusher">
+			
+			<div id="map">
+				
+			</div>
+			<div id="popup"></div>
+			<div id="header" class="ui menu borderless">
+				<div class="vertically fitted item" id="lulc-logo">
+					<img class="ui bottom aligned image" src="images/osm-lulc-logo128.png" alt="osmlanduse logo"/>
+				</div>	
+				
+				<div class="vertically fitted item right">	
+					<ul class="ui secondary right fitted menu">
+					
+						
+						<li class="item">
+							<div class="ui search">
+								  <div class="ui icon input">
+								    <input class="prompt" placeholder="Search place..." type="text">
+								    <i class="search icon"></i>
+								  </div>
+								  <div class="results"></div>
+							</div>
+						</li>
+						<li class="item"><button class="ui button" onclick="$('#contact').toggleClass('active')">Info & Contact</button></li>
+					</ul>
+					</div>
+					<div class="vertically fitted item">	
+						<a id="heigit-logo" href="https://heigit.org"><img class="ui image" src="images/HeiGIT_Logo_compact_transparent.svg" alt="HeiGIT Logo"/></a>
+					</div>
+				
+			</div>
+			<div id="pie-parent">
+			    <div>Area in current viewport <div id="viewport-area"></div></div>
+    			<div id="pie">		
+    			</div>
+			</div>
+			<div id="pieicon">
+			<button><i class="yellow pie chart icon"></i></button>
+			</div>
+		</div>
+		<div id="contact" class="ui long modal">
+			
+			<div class="header">
+			  Info & Contact <button class="ui right floated button" onclick="$('#contact').removeClass('active')">Close</button>
+			</div>
+			<div class="content">
+				<h3>About</h3>
+				<p>
+				OSM Landuse Landcover is a WebGIS application to explore the OpenStreetMap database specifically in terms of landuse and landcover information.
+				<br>
+					Land use tags were predicted when absent using belows (Schultz et al. 2020 in prep, Schultz et al. 2017) method. This was first addressed for Germany (2017) and now (2020) - with the improved methods - for all EU countries.
+				</p>
+
+<!--				<h3>Order Data</h3>-->
+<!--				<p>-->
+<!--				Underlying Data can be requested through our website: https://data.osmlanduse.org.-->
+<!--				</p>-->
+<!--				<p> -->
+<!--				It may take up to serveral days, before your request can be fulfilled.-->
+<!--				</p>-->
+
+<!--				<a class="ui button" href="https://data.osmlanduse.org/" target="_blank"> Order Data Here</a>-->
+
+				<h3>Info</h3>
+				<ul>
+					<li>Project lead - <a href="http://www.geog.uni-heidelberg.de/personen/gis_zipf_en.html">Alexander Zipf, Michael Schultz</a></li>
+					<li>Website - <a href="http://www.geog.uni-heidelberg.de/personen/gis_auer_en.html">Michael Auer</a></li>
+					<li>Cartographic styling of landuse/landcover overlay - <a href="http://www.geog.uni-heidelberg.de/personen/gis_auer_en.html">Michael Auer</a>, Janek Voss</li>
+					<li>Data of landuse/landcover overlay by <a href="http://openstreetmap.org">OpenStreetMap contibutors</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.
+						<br>
+						Missing OSM data (gaps) were filled for Europe (ongoing) using data derived from Sentinel-2 10m RGB imagery provided through Daniel Weill of Food and Agriculture Organization (FAO) and Deep Learning Methods developed by Michael Schultz, Hao Li and Zhaoyan Wu</li>
+					<li>Geoserver WMS &amp; MapProxy tilecache maintanance - <a href="http://www.geog.uni-heidelberg.de/personen/gis_auer_en.html">Michael Auer (HeiGIT gGmbH)</a></li>
+					<li>PostgreSQL/PostGIS Database with OpenStreetMap Data - Enrico Steiger, Maxim Rylov, Johannes Lauer, Markus Götz, <a href="http://www.geog.uni-heidelberg.de/personen/gis_auer_en.html">Michael Auer</a></li>
+					<!-- <li>Background map - <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.</li> -->
+					<li>Background map - © OpenStreetMap contributors under <a href="http://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> </li>
+					<li>Place Search - powered by <a href="http://wiki.openstreetmap.org/wiki/Nominatim">Nominatim</a></li>
+				</ul>
+				<h3>OSM keys used for classification</h3>
+				<p>Classification of the landuse/landcover classes are similar to the classification level 2 of the <a href="http://www.eea.europa.eu/data-and-maps/figures/corine-land-cover-2006-by-country/legend">CORINE</a> Landcover classes.<br>
+					The following OSM keys were used to form the respective class:</p>
+					<div>
+						<strong>1.1. Urban Fabric</strong>
+						<p>residential,&nbsp; garages</p>
+						<strong>1.2. Industrial, commercial and transport units</strong>
+						<p>railway,&nbsp; industrial,&nbsp; commercial,&nbsp; retail,&nbsp; harbour,&nbsp; port,&nbsp; lock,&nbsp; marina</p>
+						<strong>1.3. Mine, dump and construction sites</strong>
+						<p>quarry,&nbsp; construction,&nbsp; landfill,&nbsp; brownfield</p>
+						<strong>1.4. Artificial, non-agricultural vegetated areas</strong>
+						<p>stadium,&nbsp; recreation_ground,&nbsp; golf_course,&nbsp; sports_center,&nbsp; playground<br> pitch,&nbsp; village_green,&nbsp; allotments,&nbsp; cemetery,&nbsp; park,&nbsp; zoo,&nbsp; track,&nbsp; garden,&nbsp; raceway</p>
+						<strong>2.1. Arable Land</strong>
+						<p>greenhouse_horticulture,&nbsp; greenhouse,&nbsp; farmland,&nbsp; farm,&nbsp; farmyard</p>
+						<strong>2.2. Permanent Crops</strong>
+						<p>vineyard,&nbsp; orchard</p>
+						<strong>2.3. Pastures</strong>
+						<p>meadow</p>
+						<strong>3.1. Forests</strong>
+						<p>forest,&nbsp; wood</p>
+						<strong>3.2. Shrub and/or herbaceous vegetation associations</strong>
+						<p>grass,&nbsp; greenfield,&nbsp; scrub,&nbsp; heath,&nbsp; grassland</p>
+						<strong>3.3. Open spaces with little or no vegetation</strong>
+						<p>cliff,&nbsp; fell,&nbsp; sand,&nbsp; scree,&nbsp; beach,&nbsp; mud,&nbsp; glacier,&nbsp; rock</p>
+						<strong>4.1. Inland wetlands</strong>
+						<p>marsh,&nbsp; wetland</p>
+						<strong>4.2. Coastal wetlands</strong>
+						<p>salt_pond,&nbsp; tidal</p>	
+						<strong>5. Water bodies</strong>
+						<p>water,&nbsp; riverbank,&nbsp; reservoir,&nbsp; basin,&nbsp; dock,&nbsp; canal,&nbsp; pond</p>				
+					</div>
+
+				<h3>Acknowledgements</h3>
+
+				<p>This work is supported by <br><a href="https://heigit.org" target="_blank"><img src="images/HeiGIT_Logo_base.svg" alt="HeiGIT Logo"></a>.</p>
+
+				<h3>Terms of use</h3>
+				<p>
+						Overlay tiles of "OSM Landuse Landcover" can be used freely and without charge by any individuals through this website.
+					<br>
+					<br>
+                        If you intend to use tiles or statistics from "OSM Landuse Landcover" services in your own applications please contact us. 
+                    <br>
+                    <br>
+                        Commercial usage of the services provided by "OSM Landuse Landcover" does need approval! 
+                    <br>
+                    <br>
+                        OpenStreetMap data is available under the <a href="http://www.openstreetmap.org/copyright" target="_blank">Open Database License</a>.
+                    <br>
+                    
+				</p>
+				<h3>Related Project &amp; Literature</h3>
+
+                    <ul>
+                        <li>
+                            <a target="_blank" href="http://www.geog.uni-heidelberg.de/gis/land_sense.html">LandSense: A Citizen Observatory and Innovation Marketplace for Land Use and Land Cover Monitoring</a>
+                        </li>
+                        <li>
+                            Schultz, M., Voss, J., Auer, M., Carter, S., &amp; Zipf, A. (2017).<a href="https://doi.org/10.1016/j.jag.2017.07.014"> Open land cover from OpenStreetMap and remote sensing.</a> International Journal of Applied Earth Observation and Geoinformation, 63, 206–213. https://doi.org/10.1016/j.jag.2017.07.014
+                        </li>
+                        <li>
+                            Voß, J., Auer, M., Schultz, M. &amp; Zipf, A. (2017): Einsatz von OpenStreetMap Daten zur Erstellung von Landnutzungsprodukten am Beispiel von OSM Landuse Landcover. Symposium für Angewandte Geoinformatik AGIT 2017. Salzburg
+                        </li>
+                    </ul>
+
+				<h3>Contact</h3>
+				<p>
+					<img src="images/HeiGIT_Logo_base.svg" alt="Logo HeiGIT"/>
+					<br>
+					Prof. Dr. Alexander Zipf
+					<br>
+					HeiGIT gGmbH
+					<br>
+					Heidelberg Institute for Geoinformation Technology (HeiGIT)
+					<br>
+					<a href="https:/heigit.org" target="_blank">heigit.org</a>
+				</p>
+
+				<p>
+					<a href="https://heigit.org/imprint/" target="_blank">Impressum / Imprint</a>
+					&middot;
+					<a href="https://heigit.org/legal-notice/" target="_blank">Datenschutzerklärung / Privacy Policy</a>
+				</p>
+                
+                <div class="actions">
+    				<button class="ui button" onclick="$('#contact').removeClass('active')">Close</button>
+    			</div>
+			</div>
+		</div>
+
+		<script src="libs/turf/custom-turf-6.5.0.js"></script>
+		<script src="js/OSMLULC.js"></script>
+		<script src="js/Nominatim.js"></script>
+		<script src="js/MapConfig.js"></script>
+		<script src="js/Map.js"></script>
+		<script src="js/Stats.js"></script>
+		<script src="js/Permalink.js"></script>
+		<script src="js/Ui.js"></script>
+		<script src="js/Controller.js"></script>
+
+	</body>
+
+</html>

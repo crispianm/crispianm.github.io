@@ -94,38 +94,7 @@
 
     map.on('load', () => {
 
-        map.loadImage(
-            'https://raw.githubusercontent.com/IsaacJohnEvans/wild_campsite_ranker/main/bristol%20test%20data/beer.png',
-
-                    (error, image) => {
-                if (error) throw error;
-                map.addImage('custom-marker', image, { 'sdf': true });
-                map.addSource('food-stores', {
-                    'type': 'vector',
-                    'url': 'mapbox://examples.dl46ljcs'
-                // map.addSource('points', {
-                //     'type' : 'geojson',
-                //     'data' : 'https://raw.githubusercontent.com/IsaacJohnEvans/wild_campsite_ranker/main/bristol%20test%20data/pubs.geojson'
-            });
-            map.addLayer({
-                'id':'Pubs',
-                'type':'symbol',
-                'source':'points',
-                'layout': {
-                        'icon-image': 'custom-marker',
-                        // get the title name from the source's "title" property
-                        'text-field': ['get', 'title'],
-                        'text-font': [
-                        'Open Sans Semibold',
-                        'Arial Unicode MS Bold'
-                        ],
-                        'text-offset': [0, 1.25],
-                        'text-anchor': 'top'
-                        }
-            });
-        }
-        );
-        
+       
         map.addSource(
             'mapbox-dem', {
                 'type': 'raster-dem',
@@ -133,17 +102,6 @@
                 'tileSize': 512,
                 'maxzoom': 14
             });
-
-
-        // map.addSource('legality', {
-        //     'type': 'geojson',
-        //     'data': 'https://raw.githubusercontent.com/crispianm/crispianm.github.io/main/data/legality.geojson'
-        // });
-
-        // map.addSource('nps', {
-        //     'type': 'geojson',
-        //     'data': 'https://raw.githubusercontent.com/crispianm/crispianm.github.io/main/data/uk_national_parks_boundaries.geojson'
-        // });
 
         map.setTerrain({
             'source': 'mapbox-dem',
@@ -169,84 +127,58 @@
             'waterway-river-canal-shadow'
         );
 
-        // // Add legality polygon
-        // map.addLayer({
-        //     'id': 'Legality',
-        //     'type': 'fill',
-        //     'source': 'legality', // reference the data source
-        //     'layout': {},
-        //     'paint': {
-        //         'fill-color': '#0080ff', // blue color fill
-        //         'fill-opacity': 0.5
-        //     }
-        // });
+        // HTML from the click event's properties.
+        map.on('click', 'Legality', (e) => {
+            new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(e.features[0].properties.spr16nm)
+                .addTo(map);
+            });
 
-        // // Add nps polygon
-        // map.addLayer({
-        //     'id': 'National Parks',
-        //     'type': 'fill',
-        //     'source': 'nps', // reference the data source
-        //     'layout': {},
-        //     'paint': {
-        //         'fill-color': '#3D550C', // blue color fill
-        //         'fill-opacity': 0.5
-        //     }
-        // });
-
-        // // HTML from the click event's properties.
-        // map.on('click', 'Legality', (e) => {
-        //     new mapboxgl.Popup()
-        //         .setLngLat(e.lngLat)
-        //         .setHTML(e.features[0].properties.spr16nm)
-        //         .addTo(map);
-        //     });
-
-        // // Change the cursor to a pointer when
-        // // the mouse is over the states layer.
-        // map.on('mouseenter', 'Legality', () => {
-        //     map.getCanvas().style.cursor = 'pointer';
-        // });
+        // Change the cursor to a pointer when
+        // the mouse is over the states layer.
+        map.on('mouseenter', 'Legality', () => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
         
-        // // Change the cursor back to a pointer
-        // // when it leaves the states layer.
-        // map.on('mouseleave', 'Legality', () => {
-        //     map.getCanvas().style.cursor = '';
-        // });
+        // Change the cursor back to a pointer
+        // when it leaves the states layer.
+        map.on('mouseleave', 'Legality', () => {
+            map.getCanvas().style.cursor = '';
+        });
 
 
-        // map.on('click', 'National Parks', (e) => {
-        //     new mapboxgl.Popup()
-        //         .setLngLat(e.lngLat)
-        //         .setHTML(e.features[0].properties.name)
-        //         .addTo(map);
-        //     });
+        map.on('click', 'National Parks', (e) => {
+            new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(e.features[0].properties.name)
+                .addTo(map);
+            });
         
-        // // Change the cursor to a pointer when
-        // // the mouse is over the states layer.
-        // map.on('mouseenter', 'National Parks', () => {
-        //     map.getCanvas().style.cursor = 'pointer';
-        // });
+        // Change the cursor to a pointer when
+        // the mouse is over the states layer.
+        map.on('mouseenter', 'National Parks', () => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
         
-        // // Change the cursor back to a pointer
-        // // when it leaves the states layer.
-        // map.on('mouseleave', 'National Parks', () => {
-        //     map.getCanvas().style.cursor = '';
-        // });
+        // Change the cursor back to a pointer
+        // when it leaves the states layer.
+        map.on('mouseleave', 'National Parks', () => {
+            map.getCanvas().style.cursor = '';
+        });
 
         
     });
 
-        map.setLayoutProperty('nps', 'visibility', 'none');
 
         map.on('idle', () => {
             // If these two layers were not added to the map, abort
-            if (!map.getLayer('legality') || !map.getLayer('nps')) {
+            if (!map.getLayer('Legality') || !map.getLayer('National Parks')) {
                 return;
             }
             
             // Enumerate ids of the layers.
-            const toggleableLayerIds = ['Legality', 'National Parks','Pubs'];
-            const zoomLayerIds = ['Pubs']
+            const toggleableLayerIds = ['Legality', 'National Parks'];
 
 
             // Set up the corresponding toggle button for each layer.
@@ -292,22 +224,7 @@
             layers.appendChild(link);
         }
 
-        //Layers for zoom based Symbols
-            if (map.getZoom() > 8) {
-            for (const id of zoomLayerIds) {
-                const link = document.createElement('a');
-                link.textContent = id;
-                const layer = link.textContent;
-                const visibility = map.getLayoutProperty(layer, 'visibility');
-                map.setLayoutProperty(layer, 'visibility', 'none');
-            }}
 
-            // if (map.getZoom() > 12) {
-            // map.setStyle('mapbox://styles/mapbox/streets-v11');}
-
-
-            // if (map.getZoom() < 12) {
-            // map.setStyle('mapbox://styles/mapbox/light-v9');}
            
 
 

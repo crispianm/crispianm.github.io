@@ -60,10 +60,11 @@
     <div id="map"></div>
 
 <script>
+
 	mapboxgl.accessToken = 'pk.eyJ1IjoiY3Jpc3BpYW5tIiwiYSI6ImNsMG1oazJhejE0YzAzZHVvd2Z1Zjlhb2YifQ.cv0zlPYY6WnoKM9YLD1lMQ';
     // Use a minimal variant of the Mapbox Dark style, with certain features removed.
     const map = new mapboxgl.Map({
-        style: 'mapbox://styles/mapbox/light-v9',
+        style: 'mapbox://styles/crispianm/cl1378q1w007d14o2kv81ozot',
         center: {
             lng: -2.8066556755666565,
             lat: 53.51729421462671
@@ -98,11 +99,13 @@
 
                     (error, image) => {
                 if (error) throw error;
-                map.addImage('custom-marker',image);
-
-                map.addSource('points', {
-                    'type' : 'geojson',
-                    'data' : 'https://raw.githubusercontent.com/IsaacJohnEvans/wild_campsite_ranker/main/bristol%20test%20data/pubs.geojson'
+                map.addImage('custom-marker', image, { 'sdf': true });
+                map.addSource('food-stores', {
+                    'type': 'vector',
+                    'url': 'mapbox://examples.dl46ljcs'
+                // map.addSource('points', {
+                //     'type' : 'geojson',
+                //     'data' : 'https://raw.githubusercontent.com/IsaacJohnEvans/wild_campsite_ranker/main/bristol%20test%20data/pubs.geojson'
             });
             map.addLayer({
                 'id':'Pubs',
@@ -130,7 +133,7 @@
                 'tileSize': 512,
                 'maxzoom': 14
             });
-        
+
 
         map.addSource('legality', {
             'type': 'geojson',
@@ -313,7 +316,7 @@
         }
 
         //Layers for zoom based Symbols
-            if (map.getZoom() < 8) {
+            if (map.getZoom() > 8) {
             for (const id of zoomLayerIds) {
                 const link = document.createElement('a');
                 link.textContent = id;
@@ -321,6 +324,13 @@
                 const visibility = map.getLayoutProperty(layer, 'visibility');
                 map.setLayoutProperty(layer, 'visibility', 'none');
             }}
+
+            // if (map.getZoom() > 12) {
+            // map.setStyle('mapbox://styles/mapbox/streets-v11');}
+
+
+            // if (map.getZoom() < 12) {
+            // map.setStyle('mapbox://styles/mapbox/light-v9');}
            
 
 

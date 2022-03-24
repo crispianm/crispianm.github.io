@@ -122,32 +122,49 @@
             'id': 'hillshading',
             'source': 'mapbox-dem',
             'type': 'hillshade'
-            // insert below waterway-river-canal-shadow;
-            // where hillshading sits in the Mapbox Outdoors style
             },
             'waterway-river-canal-shadow'
         );
 
         // HTML from the click event's properties.
-        map.on('click', 'Legality', (e) => {
+        map.on('click', 'camp_landuse', (e) => {
+
+            const features = map.queryRenderedFeatures(e.point);
+
+            const displayProperties = [
+                'type',
+                'properties',
+                'id',
+                'layer',
+                'source',
+                'sourceLayer',
+                'state'
+            ];
+
+            const displayFeatures = features.map((feat) => {
+                const displayFeat = {};
+                displayProperties.forEach((prop) => {
+                    displayFeat[prop] = feat[prop];
+                });
+                return displayFeat;
+            });
+
+            var camp_landuse_features = displayFeatures[0].properties;
+
             new mapboxgl.Popup()
                 .setLngLat(e.lngLat)
-                .setHTML(e.features[0].properties.spr16nm)
+                .setHTML(camp_landuse_features.class + " (" + camp_landuse_features.type  + ")")
                 .addTo(map);
             });
 
-        // Change the cursor to a pointer when
-        // the mouse is over the states layer.
-        map.on('mouseenter', 'Legality', () => {
+
+        map.on('mouseenter', 'camp_landuse', () => {
             map.getCanvas().style.cursor = 'pointer';
         });
         
-        // Change the cursor back to a pointer
-        // when it leaves the states layer.
-        map.on('mouseleave', 'Legality', () => {
+        map.on('mouseleave', 'camp_landuse', () => {
             map.getCanvas().style.cursor = '';
         });
-
 
         map.on('click', 'National Parks', (e) => {
             new mapboxgl.Popup()
@@ -156,31 +173,25 @@
                 .addTo(map);
             });
         
-        // Change the cursor to a pointer when
-        // the mouse is over the states layer.
         map.on('mouseenter', 'National Parks', () => {
             map.getCanvas().style.cursor = 'pointer';
         });
         
-        // Change the cursor back to a pointer
-        // when it leaves the states layer.
         map.on('mouseleave', 'National Parks', () => {
             map.getCanvas().style.cursor = '';
         });
 
-        
     });
 
 
         map.on('idle', () => {
             // If these two layers were not added to the map, abort
-            if (!map.getLayer('Legality') || !map.getLayer('National Parks')) {
+            if (!map.getLayer('camp_landuse') || !map.getLayer('National Parks')) {
                 return;
             }
             
             // Enumerate ids of the layers.
-            const toggleableLayerIds = ['Legality', 'National Parks'];
-
+            const toggleableLayerIds = ['camp_landuse','National Parks'];
 
             // Set up the corresponding toggle button for each layer.
             for (const id of toggleableLayerIds) {
@@ -205,7 +216,6 @@
                 clickedLayer,
                 'visibility'
                 );
-                
                 
                 // Toggle layer visibility by changing the layout object's visibility property.
                 if (visibility === 'visible') {

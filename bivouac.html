@@ -151,21 +151,21 @@
 
             var camp_landuse_features = displayFeatures[0].properties;
 
-            map.addSource('landuse_coords', {
-            'type': 'geojson',
-            'data': displayFeatures[0].geometry
-            });
+            // map.addSource('landuse_coords', {
+            // 'type': 'geojson',
+            // 'data': displayFeatures[0].geometry
+            // });
 
-            map.addLayer({
-              'id': 'landuse-highlighted',
-              'type': 'line',
-              'source': 'landuse_coords',
-              'layout': {},
-              'paint': {
-                'line-color': '#000',
-                'line-width': 3
-               }
-            });
+            // map.addLayer({
+            //   'id': 'landuse-highlighted',
+            //   'type': 'line',
+            //   'source': 'landuse_coords',
+            //   'layout': {},
+            //   'paint': {
+            //     'line-color': '#000',
+            //     'line-width': 3
+            //    }
+            // });
           
             new mapboxgl.Popup()
                 .setLngLat(e.lngLat)

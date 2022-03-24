@@ -63,7 +63,6 @@
 <script>
 
 	mapboxgl.accessToken = 'pk.eyJ1IjoiY3Jpc3BpYW5tIiwiYSI6ImNsMG1oazJhejE0YzAzZHVvd2Z1Zjlhb2YifQ.cv0zlPYY6WnoKM9YLD1lMQ';
-    // Use a minimal variant of the Mapbox Dark style, with certain features removed.
     const map = new mapboxgl.Map({
         style: 'mapbox://styles/crispianm/cl13itnrc005015pbpdw8v5yu',
         center: {
@@ -95,7 +94,6 @@
 
     map.on('load', () => {
 
-       
         map.addSource(
             'mapbox-dem', {
                 'type': 'raster-dem',
@@ -129,14 +127,16 @@
         // HTML from the click event's properties.
         map.on('click', 'camp_landuse', (e) => {
 
-            const features = map.queryRenderedFeatures(e.point);
-
+            const features = map.queryRenderedFeatures(e.point, {
+                layers: ['camp_landuse']
+            });
             const displayProperties = [
                 'type',
                 'properties',
                 'id',
                 'layer',
                 'source',
+                'geometry',
                 'sourceLayer',
                 'state'
             ];
@@ -151,6 +151,22 @@
 
             var camp_landuse_features = displayFeatures[0].properties;
 
+            map.addSource('landuse_coords', {
+            'type': 'geojson',
+            'data': displayFeatures[0].geometry
+            });
+
+            map.addLayer({
+              'id': 'landuse-highlighted',
+              'type': 'line',
+              'source': 'landuse_coords',
+              'layout': {},
+              'paint': {
+                'line-color': '#000',
+                'line-width': 3
+               }
+            });
+          
             new mapboxgl.Popup()
                 .setLngLat(e.lngLat)
                 .setHTML(camp_landuse_features.class + " (" + camp_landuse_features.type  + ")")
@@ -235,11 +251,6 @@
             layers.appendChild(link);
         }
 
-
-           
-
-
     });
-
 
 </script>

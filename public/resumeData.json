@@ -108,26 +108,26 @@
   "portfolio": {
     "projects": [
       {
-        "title": "Bivouac",
+        "title": "bivouac",
         "category": "A wild campsite locator",
         "image": "bivouac.png",
         "url": "https://github.com/crispianm/bivouac"
       },
       {
-        "title": "ST-MFNet Internship",
-        "category": "Frame Interpolation Model I compressed.",
+        "title": "ST-MFNet",
+        "category": "Frame interpolation model",
         "image": "stmfnet.png",
         "url": "https://github.com/crispianm/ST-MFNet"
       },
       {
         "title": "SpotifySmartSort",
-        "category": "Attempt at using an Adaptive Auto-encoder to sort Spotify playlists.",
+        "category": "Auto-encoder to sort playlists.",
         "image": "spotify.png",
         "url": "https://github.com/crispianm/SpotifySmartSort"
       },
       {
         "title": "This Website",
-        "category": "A React based website I built for myself by adapting a template.",
+        "category": "A React based website.",
         "image": "crispianm.png",
         "url": "https://crispianm.github.io/"
       }

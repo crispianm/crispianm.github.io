@@ -1,0 +1,136 @@
+{
+  "main": {
+    "name": "Crispian Morris",
+    "description": "I am an Engineering Mathematics student at the University of Bristol, focusing on applications of machine learning to image processing",
+    "image": "profilepic.jpg",
+    "bio": "I'm an accomplished engineering mathematics student, with over two years of experience in industry. Highly organised, I efficiently manage my time autonomously whilst remaining an integral part of any team. Interested in developing computer technologies and web-design, and quickly adaptable to new approaches, I'm naturally creative in my approaches to problem solving. My research interests include machine learning, data science, and artificial intelligence. I'm also a keen reader, and I'm always looking to learn more about the world around me.",
+    "contactmessage": "No.",
+    "email": "crispian.morris@gmail.com",
+    "phone": "555-555-5555",
+    "github": "https://github.com/crispianm",
+    "project": "https://github.com/crispianm/bivouac",
+    "address": {
+      "street": "(Your Street)",
+      "city": "Bristol, UK",
+      "state": "San Francisco, CA",
+      "zip": "(Your Zip/Postal Code)"
+    },
+    "website": "https://crispianm.github.io/",
+    "resumedownload": "https://crispianm.github.io/",
+    "social": [
+      {
+        "name": "linkedin",
+        "url": "https://www.linkedin.com/in/crispian-morris/",
+        "className": "fa fa-linkedin"
+      },
+      {
+        "name": "github",
+        "url": "https://github.com/crispianm",
+        "className": "fa fa-github"
+      }
+    ]
+  },
+  "resume": {
+    "skillmessage": "Here you can create a short write-up of your skills to show off to employers",
+    "education": [
+      {
+        "school": "University of Bristol",
+        "degree": "Masters in Engineering Mathematics",
+        "graduated": "June 2023",
+        "description": "Focus on data science, artificial intelligence and machine learning."
+      }
+    ],
+    "work": [
+      {
+        "company": "Bristol Vision Institute",
+        "title": "Engineering Faculty Research Internship",
+        "years": "June 2022 - August 2022",
+        "description": "Internship with the Bristol Vision Institute optimising a state-of-the-art deep learning model for video frame interpolation."
+      },
+      {
+        "company": "University of Bristol IT Services",
+        "title": "Laptop and Mobile Clinic Supervisor",
+        "years": "September 2020 - Present",
+        "description": "I work with and intermittently supervise a team of technicians to help University students troubleshoot issues on their personal devices. We deal with a variety of cases at varying levels of difficulty; from resolving incorrect network configuration to simply advising students about digital best practice. I was awarded the prestigious Outstanding PLUS award in the 'Everyday Hero' category for my efforts."
+      },
+      {
+        "company": "KVAL, Inc.",
+        "title": "Engineering Assistant",
+        "years": "July 2017 - September 2019",
+        "description": "I assisted the engineers at KVAL with intermediate CAD, organized several different file servers, and increased their overall productivity significantly. I completed several research projects on potential applications for new or developing technologies in our industry, and helped manage the github repositories associated with our various production flows."
+      }
+    ],
+    "skills": [
+      {
+        "name": "Python",
+        "level": "90%"
+      },
+      {
+        "name": "Julia",
+        "level": "70%"
+      },
+      {
+        "name": "MATLAB",
+        "level": "60%"
+      },
+      {
+        "name": "CSS",
+        "level": "40%"
+      },
+      {
+        "name": "PHP",
+        "level": "40%"
+      },
+      {
+        "name": "ReactJs",
+        "level": "20%"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Machine Learning",
+        "level": "80%"
+      },
+      {
+        "name": "IT and tech",
+        "level": "90%"
+      },
+      {
+        "name": "Data Science",
+        "level": "70%"
+      },
+      {
+        "name": "Artificial Intelligence",
+        "level": "50%"
+      }
+    ]
+  },
+  "portfolio": {
+    "projects": [
+      {
+        "title": "Bivouac",
+        "category": "A wild campsite locator",
+        "image": "bivouac.png",
+        "url": "https://github.com/crispianm/bivouac"
+      },
+      {
+        "title": "ST-MFNet Internship",
+        "category": "Frame Interpolation Model I compressed.",
+        "image": "stmfnet.png",
+        "url": "https://github.com/crispianm/ST-MFNet"
+      },
+      {
+        "title": "SpotifySmartSort",
+        "category": "Attempt at using an Adaptive Auto-encoder to sort Spotify playlists.",
+        "image": "spotify.png",
+        "url": "https://github.com/crispianm/SpotifySmartSort"
+      },
+      {
+        "title": "This Website",
+        "category": "A React based website I built for myself by adapting a template.",
+        "image": "crispianm.png",
+        "url": "https://crispianm.github.io/"
+      }
+    ]
+  }
+}

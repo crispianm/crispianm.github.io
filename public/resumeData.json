@@ -1,9 +1,9 @@
 {
   "main": {
     "name": "Crispian Morris",
-    "description": "I am an Engineering Mathematics student at the University of Bristol, focusing on applications of machine learning to image processing",
+    "description": "I am a Computer Science PhD student at the University of Bristol, focusing on applications of machine learning to image processing",
     "image": "profilepic.jpg",
-    "bio": "I'm an accomplished engineering mathematics student, with over two years of experience in industry. Highly organised, I efficiently manage my time autonomously whilst remaining an integral part of any team. Interested in developing computer technologies and web-design, and quickly adaptable to new approaches, I'm naturally creative in my approaches to problem solving. My research interests include machine learning, data science, and artificial intelligence. I'm also a keen reader, and I'm always looking to learn more about the world around me.",
+    "bio": "I'm a PhD student with a 1st class degree in Engineering Mathematics and over two years of experience in industry. Highly organised, I efficiently manage my time autonomously whilst remaining an integral part of any team. Interested in developing computer technologies, and quickly adaptable to new approaches, I'm naturally creative in my approaches to problem solving. My research interests are mainly composed of combinations of computer vision and artificial intelligence." 
     "contactmessage": "No.",
     "email": "crispian.morris@gmail.com",
     "phone": "555-555-5555",
@@ -35,18 +35,18 @@
     "education": [
       {
         "school": "University of Bristol",
-        "degree": "Masters in Engineering Mathematics",
-        "graduated": "June 2023",
-        "description": "Focus on data science, artificial intelligence and machine learning."
+        "degree": "PhD in Computer Science",
+        "graduated": "In Progress",
+        "description": "BBC/iCASE funded PhD looking at deep learning inspired computer vision approches for object detection in low-light videography."
+      },
+      {
+        "school": "University of Bristol",
+        "degree": "BEng in Engineering Mathematics",
+        "graduated": "June 2022",
+        "description": "1st Class Honours, with a focus on data science, artificial intelligence and machine learning."
       }
     ],
     "work": [
-      {
-        "company": "Bristol Vision Institute",
-        "title": "Engineering Faculty Research Internship",
-        "years": "June 2022 - August 2022",
-        "description": "Internship with the Bristol Vision Institute optimising a state-of-the-art deep learning model for video frame interpolation."
-      },
       {
         "company": "University of Bristol IT Services",
         "title": "Laptop and Mobile Clinic Supervisor",

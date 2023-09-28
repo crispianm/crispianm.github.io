@@ -63,7 +63,7 @@
     "skills": [
       {
         "name": "Python",
-        "level": "90%"
+        "level": "100%"
       },
       {
         "name": "Julia",
@@ -102,10 +102,10 @@
         "url": "https://github.com/crispianm/bivouac"
       },
       {
-        "title": "ST-MFNet",
-        "category": "Frame interpolation model",
+        "title": "ST-MFNet Mini",
+        "category": "Accepted at ICIP 2023",
         "image": "stmfnet.png",
-        "url": "https://github.com/crispianm/ST-MFNet"
+        "url": "https://github.com/crispianm/ST-MFNet-Mini"
       },
       {
         "title": "SpotifySmartSort",

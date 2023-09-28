@@ -104,6 +104,51 @@
         "level": "50%"
       }
     ]
+    // ,
+    // "skills": [
+    //   {
+    //     "name": "Python",
+    //     "level": "90%"
+    //   },
+    //   {
+    //     "name": "Julia",
+    //     "level": "70%"
+    //   },
+    //   {
+    //     "name": "MATLAB",
+    //     "level": "60%"
+    //   },
+    //   {
+    //     "name": "CSS",
+    //     "level": "40%"
+    //   },
+    //   {
+    //     "name": "PHP",
+    //     "level": "40%"
+    //   },
+    //   {
+    //     "name": "ReactJs",
+    //     "level": "20%"
+    //   }
+    // ],
+    // "abilities": [
+    //   {
+    //     "name": "Machine Learning",
+    //     "level": "80%"
+    //   },
+    //   {
+    //     "name": "IT and tech",
+    //     "level": "90%"
+    //   },
+    //   {
+    //     "name": "Data Science",
+    //     "level": "70%"
+    //   },
+    //   {
+    //     "name": "Artificial Intelligence",
+    //     "level": "50%"
+    //   }
+    // ]
   },
   "portfolio": {
     "projects": [

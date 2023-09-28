@@ -72,36 +72,24 @@
       {
         "name": "MATLAB",
         "level": "60%"
-      },
-      {
-        "name": "CSS",
-        "level": "40%"
-      },
-      {
-        "name": "PHP",
-        "level": "40%"
-      },
-      {
-        "name": "ReactJs",
-        "level": "20%"
       }
     ],
     "abilities": [
       {
         "name": "Machine Learning",
-        "level": "80%"
+        "level": "100%"
       },
       {
         "name": "IT and tech",
-        "level": "90%"
+        "level": "100%"
       },
       {
         "name": "Data Science",
-        "level": "70%"
+        "level": "100%"
       },
       {
-        "name": "Artificial Intelligence",
-        "level": "50%"
+        "name": "Research",
+        "level": "100%"
       }
     ]
   },

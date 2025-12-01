@@ -16,7 +16,7 @@
       "zip": "(Your Zip/Postal Code)"
     },
     "website": "https://crispianm.github.io/",
-    "resumedownload": "https://crispianm.github.io/",
+    "resumedownload": "/cv",
     "social": [
       {
         "name": "linkedin",
@@ -37,7 +37,7 @@
         "school": "University of Bristol",
         "degree": "PhD in Computer Science",
         "graduated": "In Progress",
-        "description": "BBC/iCASE funded PhD looking at deep learning inspired computer vision approches for object detection in low-light videography."
+        "description": "BBC/iCASE funded PhD looking at deep learning inspired computer vision approaches for object detection in low-light videography."
       },
       {
         "school": "University of Bristol",

@@ -16,7 +16,7 @@
       "zip": "(Your Zip/Postal Code)"
     },
     "website": "https://crispianm.github.io/",
-    "resumedownload": "https://crispianm.github.io/",
+    "resumedownload": "/cv",
     "social": [
       {
         "name": "linkedin",
@@ -37,7 +37,7 @@
         "school": "University of Bristol",
         "degree": "PhD in Computer Science",
         "graduated": "In Progress",
-        "description": "BBC/iCASE funded PhD looking at deep learning inspired computer vision approches for object detection in low-light videography."
+        "description": "BBC/iCASE funded PhD looking at deep learning inspired computer vision approaches for object detection in low-light videography."
       },
       {
         "school": "University of Bristol",
@@ -63,7 +63,7 @@
     "skills": [
       {
         "name": "Python",
-        "level": "100%"
+        "level": "90%"
       },
       {
         "name": "Julia",
@@ -72,24 +72,36 @@
       {
         "name": "MATLAB",
         "level": "60%"
+      },
+      {
+        "name": "CSS",
+        "level": "40%"
+      },
+      {
+        "name": "PHP",
+        "level": "40%"
+      },
+      {
+        "name": "ReactJs",
+        "level": "20%"
       }
     ],
     "abilities": [
       {
         "name": "Machine Learning",
-        "level": "100%"
+        "level": "80%"
       },
       {
         "name": "IT and tech",
-        "level": "100%"
+        "level": "90%"
       },
       {
         "name": "Data Science",
-        "level": "100%"
+        "level": "70%"
       },
       {
-        "name": "Research",
-        "level": "100%"
+        "name": "Artificial Intelligence",
+        "level": "50%"
       }
     ]
   },
@@ -102,10 +114,10 @@
         "url": "https://github.com/crispianm/bivouac"
       },
       {
-        "title": "ST-MFNet Mini",
-        "category": "Accepted at ICIP 2023",
+        "title": "ST-MFNet",
+        "category": "Frame interpolation model",
         "image": "stmfnet.png",
-        "url": "https://github.com/crispianm/ST-MFNet-Mini"
+        "url": "https://github.com/crispianm/ST-MFNet"
       },
       {
         "title": "SpotifySmartSort",

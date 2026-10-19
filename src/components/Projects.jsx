@@ -1,22 +1,22 @@
+import Art from "./Art";
 import Icon from "./Icon";
 import Reveal from "./Reveal";
+import SectionHead from "./SectionHead";
 
 export default function Projects({ projects }) {
   return (
-    <section id="projects">
+    <section id="projects" className="block">
       <Reveal className="container">
-        <h2>Projects</h2>
+        <SectionHead eyebrow="Code" title="Projects" />
         <ul className="cards">
           {projects.map((p) => (
             <li key={p.title}>
               <a className="card" href={p.url} rel="noopener">
-                <img src={p.image} alt="" loading="lazy" width="400" height="225" />
-                <div className="card-body">
-                  <h3>
-                    {p.title} <Icon name="arrow" size={16} />
-                  </h3>
-                  <p>{p.description}</p>
-                </div>
+                <Art name={p.art} className="card-art" />
+                <h3>
+                  {p.title} <Icon name="arrow" size={15} />
+                </h3>
+                <p>{p.description}</p>
               </a>
             </li>
           ))}

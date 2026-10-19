@@ -7,11 +7,13 @@ const paths = {
   download: "M12 3v10.2l3.6-3.6 1.4 1.4-6 6-6-6 1.4-1.4 3.6 3.6V3h2ZM4 19h16v2H4v-2Z",
   arrow: "M7 17 17 7M9 7h8v8",
   scholar: "M12 3 1 9l11 6 9-4.9V17h2V9L12 3Zm-6 9.5v4c0 1.7 2.7 3.5 6 3.5s6-1.8 6-3.5v-4l-6 3.3-6-3.3Z",
+  down: "M12 4v15M6 13l6 6 6-6",
+  external: "M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4M14 4h6v6M20 4 10 14",
   pin: "M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z",
 };
 
 export default function Icon({ name, size = 18 }) {
-  const stroke = name === "arrow";
+  const stroke = ["arrow", "down", "external"].includes(name);
   return (
     <svg
       className="icon"

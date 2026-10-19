@@ -2,22 +2,26 @@ import { useEffect, useState } from "react";
 
 const sections = [
   ["about", "About"],
+  ["research", "Research"],
   ["experience", "Experience"],
-  ["publications", "Publications"],
-  ["skills", "Skills"],
   ["projects", "Projects"],
-  ["contact", "Contact"],
 ];
 
-export default function Header({ name }) {
+export default function Header({ initials }) {
+  const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => e.isIntersecting && setActive(e.target.id));
-      },
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
       { rootMargin: "-40% 0px -55% 0px" },
     );
     sections.forEach(([id]) => {
@@ -28,12 +32,12 @@ export default function Header({ name }) {
   }, []);
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
       <nav className="nav" aria-label="Primary">
-        <a className="brand" href="#top">
-          {name}
+        <a className="brand" href="#top" aria-label="Back to top">
+          {initials}
         </a>
-        <ul>
+        <ul className="nav-links">
           {sections.map(([id, label]) => (
             <li key={id}>
               <a href={`#${id}`} aria-current={active === id ? "true" : undefined}>
@@ -42,6 +46,9 @@ export default function Header({ name }) {
             </li>
           ))}
         </ul>
+        <a className="nav-contact" href="#contact">
+          Contact
+        </a>
       </nav>
     </header>
   );

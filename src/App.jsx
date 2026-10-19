@@ -1,8 +1,9 @@
 import data from "./data.json";
 import Header from "./components/Header";
+import Hero from "./components/Hero";
 import About from "./components/About";
-import Experience from "./components/Experience";
 import Publications from "./components/Publications";
+import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
@@ -11,11 +12,12 @@ import Footer from "./components/Footer";
 export default function App() {
   return (
     <>
-      <Header name={data.name} />
+      <Header initials={data.initials} />
       <main>
+        <Hero data={data} />
         <About data={data} />
-        <Experience education={data.education} work={data.work} />
         <Publications publications={data.publications} scholar={data.scholar} />
+        <Experience education={data.education} work={data.work} />
         <Skills skills={data.skills} />
         <Projects projects={data.projects} />
         <Contact data={data} />

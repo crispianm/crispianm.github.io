@@ -1,57 +1,26 @@
-import React, { Component } from "react";
-import ReactGA from "react-ga4";
-import $ from "jquery";
-import "./App.css";
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-import About from "./Components/About";
-import Resume from "./Components/Resume";
-// import Contact from "./Components/Contact";
-import Portfolio from "./Components/Portfolio";
+import data from "./data.json";
+import Header from "./components/Header";
+import About from "./components/About";
+import Experience from "./components/Experience";
+import Publications from "./components/Publications";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      foo: "bar",
-      resumeData: {}
-    };
-
-    ReactGA.initialize("UA-110570651-1");
-    ReactGA.send("pageview");
-  }
-
-  getResumeData() {
-    $.ajax({
-      url: "./resumeData.json",
-      dataType: "json",
-      cache: false,
-      success: function (data) {
-        this.setState({ resumeData: data });
-      }.bind(this),
-      error: function (xhr, status, err) {
-        console.log(err);
-        alert(err);
-      }
-    });
-  }
-
-  componentDidMount() {
-    this.getResumeData();
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <Header data={this.state.resumeData.main} />
-        <About data={this.state.resumeData.main} />
-        <Resume data={this.state.resumeData.resume} />
-        <Portfolio data={this.state.resumeData.portfolio} />
-        {/* <Contact data={this.state.resumeData.main} /> */}
-        <Footer data={this.state.resumeData.main} />
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <>
+      <Header name={data.name} />
+      <main>
+        <About data={data} />
+        <Experience education={data.education} work={data.work} />
+        <Publications publications={data.publications} scholar={data.scholar} />
+        <Skills skills={data.skills} />
+        <Projects projects={data.projects} />
+        <Contact data={data} />
+      </main>
+      <Footer name={data.name} links={data.links} />
+    </>
+  );
 }
-
-export default App;

@@ -7,8 +7,21 @@
   "location": "Bath, UK & San Francisco, CA",
   "resume": "Resume.pdf",
   "links": [
-    { "name": "GitHub", "icon": "github", "url": "https://github.com/crispianm" },
-    { "name": "LinkedIn", "icon": "linkedin", "url": "https://www.linkedin.com/in/crispian-morris/" }
+    {
+      "name": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/crispianm"
+    },
+    {
+      "name": "LinkedIn",
+      "icon": "linkedin",
+      "url": "https://www.linkedin.com/in/crispian-morris/"
+    },
+    {
+      "name": "Google Scholar",
+      "icon": "scholar",
+      "url": "https://scholar.google.com/citations?user=hka8QbUAAAAJ"
+    }
   ],
   "education": [
     {
@@ -28,8 +41,8 @@
     {
       "company": "University of Bristol IT Services",
       "title": "Laptop and Mobile Clinic Supervisor",
-      "dates": "September 2020 - Present",
-      "description": "I work with and intermittently supervise a team of technicians to help University students troubleshoot issues on their personal devices. We deal with a variety of cases, from resolving incorrect network configuration to advising students about digital best practice. I was awarded the Outstanding PLUS award in the 'Everyday Hero' category for my efforts."
+      "dates": "September 2020 - September 2025",
+      "description": "I worked with, and intermittently supervised, a team of technicians helping University students troubleshoot issues on their personal devices. We handled a variety of cases, from resolving incorrect network configuration to advising students about digital best practice. I was awarded the Outstanding PLUS award in the 'Everyday Hero' category for my efforts."
     },
     {
       "company": "KVAL, Inc.",
@@ -39,9 +52,34 @@
     }
   ],
   "skills": [
-    { "group": "Languages", "items": ["Python", "Julia", "MATLAB", "CSS", "PHP", "React"] },
-    { "group": "Research areas", "items": ["Machine learning", "Computer vision", "Data science", "Artificial intelligence"] },
-    { "group": "Other", "items": ["IT support", "CAD", "Git"] }
+    {
+      "group": "Languages",
+      "items": [
+        "Python",
+        "Julia",
+        "MATLAB",
+        "CSS",
+        "PHP",
+        "React"
+      ]
+    },
+    {
+      "group": "Research areas",
+      "items": [
+        "Machine learning",
+        "Computer vision",
+        "Data science",
+        "Artificial intelligence"
+      ]
+    },
+    {
+      "group": "Other",
+      "items": [
+        "IT support",
+        "CAD",
+        "Git"
+      ]
+    }
   ],
   "projects": [
     {
@@ -68,5 +106,61 @@
       "image": "images/portfolio/crispianm.webp",
       "url": "https://github.com/crispianm/crispianm.github.io"
     }
-  ]
+  ],
+  "publications": [
+    {
+      "title": "PocketDVDNet: Realtime Video Denoising for Real Camera Noise",
+      "authors": [
+        "Crispian Morris*",
+        "Imogen Dexter*",
+        "Fan Zhang",
+        "David R. Bull",
+        "Nantheera Anantrasirichai"
+      ],
+      "venue": "arXiv preprint",
+      "year": 2026,
+      "note": "* joint first authors",
+      "url": "https://arxiv.org/abs/2601.16780"
+    },
+    {
+      "title": "Towards a General-Purpose Zero-Shot Synthetic Low-Light Image and Video Pipeline",
+      "authors": [
+        "Joanne Lin",
+        "Crispian Morris",
+        "Ruirui Lin",
+        "Fan Zhang",
+        "David Bull",
+        "Nantheera Anantrasirichai"
+      ],
+      "venue": "McGE'25 Workshop",
+      "year": 2025,
+      "url": "https://arxiv.org/abs/2504.12169"
+    },
+    {
+      "title": "DaBiT: Depth and Blur informed Transformer for Video Focal Deblurring",
+      "authors": [
+        "Crispian Morris",
+        "Nantheera Anantrasirichai",
+        "Fan Zhang",
+        "David Bull"
+      ],
+      "venue": "IEEE/CVF Winter Conference on Applications of Computer Vision Workshops (WACVW)",
+      "year": 2025,
+      "url": "https://arxiv.org/abs/2407.01230"
+    },
+    {
+      "title": "ST-MFNet Mini: Knowledge Distillation-Driven Frame Interpolation",
+      "authors": [
+        "Crispian Morris",
+        "Duolikun Danier",
+        "Fan Zhang",
+        "Nantheera Anantrasirichai",
+        "David Bull"
+      ],
+      "venue": "IEEE International Conference on Image Processing (ICIP)",
+      "year": 2023,
+      "url": "https://arxiv.org/abs/2302.08455"
+    }
+  ],
+  "scholar": "https://scholar.google.com/citations?user=hka8QbUAAAAJ"
 }

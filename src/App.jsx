@@ -2,6 +2,7 @@ import data from "./data.json";
 import Header from "./components/Header";
 import About from "./components/About";
 import Experience from "./components/Experience";
+import Publications from "./components/Publications";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
@@ -14,6 +15,7 @@ export default function App() {
       <main>
         <About data={data} />
         <Experience education={data.education} work={data.work} />
+        <Publications publications={data.publications} scholar={data.scholar} />
         <Skills skills={data.skills} />
         <Projects projects={data.projects} />
         <Contact data={data} />

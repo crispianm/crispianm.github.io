@@ -13,4 +13,6 @@ npm run build    # outputs to build/
 
 **GitHub Pages:** pushes to `main` build and deploy via `.github/workflows/deploy.yml`. In the repository settings under Pages, set the source to "GitHub Actions".
 
+The site is served at https://crispian.uk. The custom domain is set in the repository's Pages settings (and `public/CNAME`), with DNS pointing at GitHub Pages.
+
 **Self-hosting:** `docker compose up -d --build` serves the site on port 8080 (nginx, restarts automatically).

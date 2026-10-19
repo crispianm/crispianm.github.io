@@ -1,0 +1,72 @@
+{
+  "name": "Crispian Morris",
+  "tagline": "Computer Science PhD student at the University of Bristol, applying machine learning to image and video processing.",
+  "image": "images/profilepic.webp",
+  "bio": "I'm a PhD student with a 1st class degree in Engineering Mathematics and over two years of experience in industry. Highly organised, I manage my time autonomously while remaining an integral part of any team. I'm interested in developing computer technologies, quick to adapt to new approaches, and naturally creative when solving problems. My research interests sit at the intersection of computer vision and artificial intelligence.",
+  "email": "crispian.morris@gmail.com",
+  "location": "Bath, UK & San Francisco, CA",
+  "resume": "Resume.pdf",
+  "links": [
+    { "name": "GitHub", "icon": "github", "url": "https://github.com/crispianm" },
+    { "name": "LinkedIn", "icon": "linkedin", "url": "https://www.linkedin.com/in/crispian-morris/" }
+  ],
+  "education": [
+    {
+      "school": "University of Bristol",
+      "degree": "PhD in Computer Science",
+      "dates": "In progress",
+      "description": "BBC/iCASE funded PhD looking at deep learning inspired computer vision approaches for object detection in low-light videography."
+    },
+    {
+      "school": "University of Bristol",
+      "degree": "BEng in Engineering Mathematics",
+      "dates": "Graduated June 2022",
+      "description": "1st Class Honours, with a focus on data science, artificial intelligence and machine learning."
+    }
+  ],
+  "work": [
+    {
+      "company": "University of Bristol IT Services",
+      "title": "Laptop and Mobile Clinic Supervisor",
+      "dates": "September 2020 - Present",
+      "description": "I work with and intermittently supervise a team of technicians to help University students troubleshoot issues on their personal devices. We deal with a variety of cases, from resolving incorrect network configuration to advising students about digital best practice. I was awarded the Outstanding PLUS award in the 'Everyday Hero' category for my efforts."
+    },
+    {
+      "company": "KVAL, Inc.",
+      "title": "Engineering Assistant",
+      "dates": "July 2017 - September 2019",
+      "description": "I assisted the engineers at KVAL with intermediate CAD, organised several file servers, and significantly increased their overall productivity. I completed research projects on potential applications of new technologies in the industry, and helped manage the GitHub repositories associated with our production flows."
+    }
+  ],
+  "skills": [
+    { "group": "Languages", "items": ["Python", "Julia", "MATLAB", "CSS", "PHP", "React"] },
+    { "group": "Research areas", "items": ["Machine learning", "Computer vision", "Data science", "Artificial intelligence"] },
+    { "group": "Other", "items": ["IT support", "CAD", "Git"] }
+  ],
+  "projects": [
+    {
+      "title": "bivouac",
+      "description": "A wild campsite locator.",
+      "image": "images/portfolio/bivouac.webp",
+      "url": "https://github.com/crispianm/bivouac"
+    },
+    {
+      "title": "ST-MFNet",
+      "description": "Frame interpolation model.",
+      "image": "images/portfolio/stmfnet.webp",
+      "url": "https://github.com/crispianm/ST-MFNet"
+    },
+    {
+      "title": "SpotifySmartSort",
+      "description": "Auto-encoder to sort playlists.",
+      "image": "images/portfolio/spotify.webp",
+      "url": "https://github.com/crispianm/SpotifySmartSort"
+    },
+    {
+      "title": "This website",
+      "description": "A React and Vite personal site.",
+      "image": "images/portfolio/crispianm.webp",
+      "url": "https://github.com/crispianm/crispianm.github.io"
+    }
+  ]
+}

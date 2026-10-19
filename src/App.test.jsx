@@ -1,8 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import { expect, it } from "vitest";
+import App from "./App";
+import data from "./data.json";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+it("renders the main sections", () => {
+  render(<App />);
+  expect(screen.getByRole("heading", { level: 1, name: data.name })).toBeTruthy();
+  for (const name of ["Experience", "Skills", "Projects", "Get in touch"]) {
+    expect(screen.getByRole("heading", { level: 2, name })).toBeTruthy();
+  }
+  expect(screen.getAllByRole("listitem").length).toBeGreaterThan(0);
+});
+
+it("does not publish a phone number or placeholder text", () => {
+  const text = JSON.stringify(data);
+  expect(text).not.toMatch(/555-555|Your Street|Lorem|Nordic Giant/i);
+  expect("phone" in data).toBe(false);
 });

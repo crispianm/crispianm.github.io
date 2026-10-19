@@ -4,7 +4,6 @@ const sections = [
   ["about", "About"],
   ["research", "Research"],
   ["experience", "Experience"],
-  ["projects", "Projects"],
 ];
 
 export default function Header({ initials }) {

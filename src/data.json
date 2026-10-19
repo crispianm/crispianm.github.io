@@ -81,44 +81,6 @@
       ]
     }
   ],
-  "projects": [
-    {
-      "title": "DaBiT",
-      "description": "Code for depth and blur informed video deblurring.",
-      "url": "https://github.com/crispianm/DaBiT",
-      "art": "defocus"
-    },
-    {
-      "title": "ST-MFNet Mini",
-      "description": "Distilled, lightweight frame interpolation.",
-      "url": "https://github.com/crispianm/ST-MFNet-Mini",
-      "art": "interpolate"
-    },
-    {
-      "title": "bivouac",
-      "description": "A wild campsite locator.",
-      "url": "https://github.com/crispianm/bivouac",
-      "art": "map"
-    },
-    {
-      "title": "SpotifySmartSort",
-      "description": "Auto-encoder to sort playlists.",
-      "url": "https://github.com/crispianm/SpotifySmartSort",
-      "art": "encoder"
-    },
-    {
-      "title": "ST-MFNet",
-      "description": "Frame interpolation model.",
-      "url": "https://github.com/crispianm/ST-MFNet",
-      "art": "flow"
-    },
-    {
-      "title": "This website",
-      "description": "A React and Vite personal site.",
-      "url": "https://github.com/crispianm/crispianm.github.io",
-      "art": "site"
-    }
-  ],
   "publications": [
     {
       "title": "PocketDVDNet: Realtime Video Denoising For Real Camera Noise",
@@ -129,12 +91,20 @@
         "D. R. Bull",
         "N. Anantrasirichai"
       ],
-      "chip": "ICASSP 2026",
       "venue": "ICASSP 2026 - 2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)",
       "year": 2026,
       "description": "A lightweight video denoiser built with sparsity-guided pruning, a physics-informed noise model and knowledge distillation: 74% smaller, with better denoising quality, and fast enough for real-time use.",
-      "url": "https://arxiv.org/abs/2601.16780",
-      "art": "denoise"
+      "art": "denoise",
+      "id": "morris2026pocketdvdnet",
+      "abbr": "ICASSP 2026",
+      "authorsFull": [
+        "Morris, Crispian",
+        "Dexter, Imogen",
+        "Zhang, Fan",
+        "Bull, David R.",
+        "Anantrasirichai, Nantheera"
+      ],
+      "arxiv": "2601.16780"
     },
     {
       "title": "Towards a General-Purpose Zero-Shot Synthetic Low-Light Image and Video Pipeline",
@@ -146,12 +116,23 @@
         "D. Bull",
         "N. Anantrasirichai"
       ],
-      "chip": "ACM MM Workshop 2025",
       "venue": "Proceedings of the 3rd International Workshop on Multimedia Content Generation and Evaluation (in conjunction with ACM Multimedia)",
       "year": 2025,
       "description": "A zero-shot pipeline for synthesising realistic low-light images and video, for training and evaluating methods without paired real-world data.",
-      "url": "https://arxiv.org/abs/2504.12169",
-      "art": "lowlight"
+      "art": "lowlight",
+      "id": "lin2025towards",
+      "abbr": "ACM MM McGE 2025",
+      "authorsFull": [
+        "Lin, Joanne",
+        "Morris, Crispian",
+        "Lin, Ruirui",
+        "Zhang, Fan",
+        "Bull, David",
+        "Anantrasirichai, Nantheera"
+      ],
+      "arxiv": "2504.12169",
+      "doi": "10.1145/3746278.3759376",
+      "code": "https://github.com/JoanneLin168/degradation-estimation-network"
     },
     {
       "title": "DaBiT: Depth and Blur Informed Transformer for Video Deblurring",
@@ -162,12 +143,22 @@
         "F. Zhang",
         "D. Bull"
       ],
-      "chip": "WACV 2025",
-      "venue": "Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV / WACVW), pp. 315-325",
+      "venue": "Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV / WACVW)",
       "year": 2025,
       "description": "A transformer that uses depth and blur estimates to remove accidental out-of-focus blur from video, with a new benchmark for the task.",
-      "url": "https://arxiv.org/abs/2407.01230",
-      "art": "defocus"
+      "art": "defocus",
+      "id": "morris2025dabit",
+      "abbr": "WACVW 2025",
+      "authorsFull": [
+        "Morris, Crispian",
+        "Anantrasirichai, Nantheera",
+        "Zhang, Fan",
+        "Bull, David"
+      ],
+      "arxiv": "2407.01230",
+      "pages": "315-325",
+      "doi": "10.1109/WACVW65960.2025.00038",
+      "code": "https://github.com/crispianm/DaBiT"
     },
     {
       "title": "ST-MFNet Mini: Knowledge distillation-driven frame interpolation",
@@ -178,12 +169,23 @@
         "N. Anantrasirichai",
         "D. R. Bull"
       ],
-      "chip": "ICIP 2023",
-      "venue": "2023 IEEE International Conference on Image Processing (ICIP), pp. 1045-1049",
+      "venue": "2023 IEEE International Conference on Image Processing (ICIP)",
       "year": 2023,
       "description": "Pruning and teacher-student distillation shrink ST-MFNet by 91% in parameters and run 35% faster, while staying close to far heavier interpolation models.",
-      "url": "https://arxiv.org/abs/2302.08455",
-      "art": "interpolate"
+      "art": "interpolate",
+      "id": "morris2023st",
+      "abbr": "ICIP 2023",
+      "authorsFull": [
+        "Morris, Crispian",
+        "Danier, Duolikun",
+        "Zhang, Fan",
+        "Anantrasirichai, Nantheera",
+        "Bull, David R."
+      ],
+      "arxiv": "2302.08455",
+      "pages": "1045-1049",
+      "doi": "10.1109/ICIP49359.2023.10222892",
+      "code": "https://github.com/crispianm/ST-MFNet-Mini"
     }
   ],
   "scholar": "https://scholar.google.com/citations?user=hka8QbUAAAAJ",

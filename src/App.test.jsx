@@ -6,7 +6,7 @@ import data from "./data.json";
 it("renders the main sections", () => {
   render(<App />);
   expect(screen.getByRole("heading", { level: 1, name: data.name })).toBeTruthy();
-  for (const name of ["Publications", "Education & experience", "Skills", "Projects", "Get in touch"]) {
+  for (const name of ["Publications", "Education & experience", "Skills", "Get in touch"]) {
     expect(screen.getByRole("heading", { level: 2, name })).toBeTruthy();
   }
   expect(screen.getAllByRole("listitem").length).toBeGreaterThan(0);
@@ -25,6 +25,17 @@ it("lists publications and an ended IT role", () => {
 
 it("lists the four publications with exact venues", () => {
   expect(data.publications.map((p) => p.year)).toEqual([2026, 2025, 2025, 2023]);
-  expect(data.publications.some((p) => /pp\. 1045-1049/.test(p.venue))).toBe(true);
-  expect(data.publications.some((p) => /pp\. 315-325/.test(p.venue))).toBe(true);
+  expect(data.publications.some((p) => p.pages === "1045-1049")).toBe(true);
+  expect(data.publications.some((p) => p.pages === "315-325")).toBe(true);
+});
+
+it("shows no Projects section", () => {
+  render(<App />);
+  expect(screen.queryByRole("heading", { name: "Projects" })).toBeNull();
+});
+
+it("renders a venue badge and teaser for each paper", () => {
+  const { container } = render(<App />);
+  expect(container.querySelectorAll(".paper .badge").length).toBe(data.publications.length);
+  expect(container.querySelectorAll(".paper .teaser-frame").length).toBe(data.publications.length);
 });

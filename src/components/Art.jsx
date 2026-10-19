@@ -58,51 +58,6 @@ const art = {
       <circle cx="92" cy="74" r="2.2" fill="currentColor" opacity="0.6" />
     </>
   ),
-  // Contours and a pin.
-  map: (
-    <>
-      <path d="M10 70 Q30 40 50 55 T90 35" opacity="0.4" />
-      <path d="M10 80 Q32 52 50 66 T90 48" opacity="0.4" />
-      <path d="M10 60 Q28 28 50 44 T90 22" opacity="0.4" />
-      <path d="M50 18a10 10 0 0 1 10 10c0 9-10 20-10 20S40 37 40 28a10 10 0 0 1 10-10Z" strokeWidth="1" />
-      <circle cx="50" cy="28" r="3" fill="currentColor" opacity="0.7" />
-    </>
-  ),
-  // Auto-encoder bottleneck.
-  encoder: (
-    <>
-      {[
-        [14, [22, 36, 50, 64, 78]],
-        [34, [32, 46, 60, 74].slice(0, 3)],
-        [50, [44, 56]],
-        [66, [32, 46, 60].slice(0, 3)],
-        [86, [22, 36, 50, 64, 78]],
-      ].flatMap(([x, ys]) => ys.map((y) => <circle key={`${x}-${y}`} cx={x} cy={y} r="4" opacity="0.8" />))}
-      <path d="M18 50 L30 46 M18 50 L30 60 M38 46 L46 44 M38 60 L46 56 M54 44 L62 46 M54 56 L62 60 M70 46 L82 50 M70 60 L82 50" opacity="0.35" />
-      <circle cx="50" cy="50" r="2" fill="currentColor" opacity="0.7" />
-    </>
-  ),
-  // Optical flow arrows.
-  flow: (
-    <>
-      {[20, 40, 60, 80].flatMap((y) =>
-        [20, 45, 70].map((x) => (
-          <g key={`${x}-${y}`} opacity={0.35 + ((x + y) % 5) * 0.12}>
-            <line x1={x} y1={y} x2={x + 14} y2={y - 4 + (x % 3) * 4} />
-            <circle cx={x + 14} cy={y - 4 + (x % 3) * 4} r="1.6" fill="currentColor" />
-          </g>
-        )),
-      )}
-    </>
-  ),
-  // Brackets and a cursor.
-  site: (
-    <>
-      <path d="M32 30 14 50l18 20M68 30l18 20-18 20" strokeWidth="1" />
-      <line x1="56" y1="26" x2="44" y2="74" opacity="0.6" />
-      <circle cx="50" cy="50" r="38" opacity="0.2" strokeDasharray="2 4" />
-    </>
-  ),
 };
 
 export default function Art({ name, className = "" }) {
@@ -117,7 +72,7 @@ export default function Art({ name, className = "" }) {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      {art[name] || art.site}
+      {art[name]}
     </svg>
   );
 }
